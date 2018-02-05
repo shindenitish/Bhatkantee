@@ -1,0 +1,53 @@
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, MenuController, AlertController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+
+
+@IonicPage()
+@Component({
+  selector: 'page-register',
+  templateUrl: 'register.html',
+})
+export class RegisterPage {
+
+  @ViewChild('email') email;
+  @ViewChild('password') password;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu:MenuController, public alertCtrl: AlertController, public afAuth: AngularFireAuth) {
+    this.menu = menu;
+    this.menu.enable(false, 'myMenu')
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad RegisterPage');
+  }
+
+  signUp(){
+    this.afAuth.auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
+    .then(data =>{
+      //console.log('Received:\n', data);
+      this.showAlert('Info', 'Registered successfully');
+      this.navCtrl.setRoot(LoginPage);
+    })
+    .catch(error =>{
+      //console.log('Error:\n', error.message);
+      this.showAlert('Error', error.message);
+    });
+  }
+
+  showAlert(title, content) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: content,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  switch(){
+    this.navCtrl.setRoot(LoginPage);
+  }
+
+}

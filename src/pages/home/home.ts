@@ -10,7 +10,6 @@ import { HeaderComponent } from '../../components/header/header'
 export class HomePage {
 
   constructor(public navCtrl: NavController) {
-
   }
 
 }
