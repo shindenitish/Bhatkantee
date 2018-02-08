@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, Loading, AlertController, LoadingController, MenuController } from 'ionic-angular';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { AuthProvider } from '../../providers/auth/auth';
+import { CommonServicesProvider } from '../../providers/common-services/common-services';
+
 import { EmailValidator } from '../../validators/email';
 
-import { TabsPage } from '../tabs/tabs';
+import { LoginPage } from '../login/login';
+
 
 
 @IonicPage()
@@ -18,7 +21,9 @@ export class RegisterPage {
   public signupForm: FormGroup;
   public loading: Loading;
 
-  constructor(public nav: NavController, public authData: AuthProvider, public formBuilder: FormBuilder, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public menu: MenuController) {
+  appLogo: string="../../assets/imgs/appLogo.png";
+
+  constructor(public nav: NavController, public authData: AuthProvider, private common: CommonServicesProvider, public formBuilder: FormBuilder, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public menu: MenuController) {
     this.menu = menu;
     this.menu.enable(false, 'myMenu')
     
@@ -34,20 +39,11 @@ export class RegisterPage {
     } else {
       this.authData.registerUser(this.signupForm.value.email, this.signupForm.value.password)
       .then(() => {
-        this.nav.setRoot(TabsPage);
+        this.common.showBasicAlert('Registered successfully!', "Please verify your email id to use services.");        
+        this.nav.setRoot(LoginPage);
       }, (error) => {
         this.loading.dismiss().then( () => {
-          var errorMessage: string = error.message;
-            let alert = this.alertCtrl.create({
-              message: errorMessage,
-              buttons: [
-                {
-                  text: "Ok",
-                  role: 'cancel'
-                }
-              ]
-            });
-          alert.present();
+          this.common.showBasicAlert('Error', error.message);        
         });
       });
 

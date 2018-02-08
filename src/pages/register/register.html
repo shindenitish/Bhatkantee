@@ -7,21 +7,24 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-card>
+        <img src="{{appLogo}}"/>  
+    </ion-card>
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
     <ion-item>
       <ion-label floating>Email</ion-label>
       <ion-input formControlName="email" type="email" [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.dirty"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
-      <p>Please enter a valid Email.</p>
+      <p>Enter a valid email</p>
     </ion-item>
     <ion-item>
       <ion-label floating>Password</ion-label>
       <ion-input formControlName="password" type="password" [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
-      <p>Your password needs more than 6 characters.</p>
+      <p>Weak Password (min. 6 characters)</p>
     </ion-item>
-    <button ion-button block type="submit">Create an Account</button>
+    <button ion-button block type="submit"[disabled]="!signupForm.valid" >Create an Account</button>
   </form>
 </ion-content>

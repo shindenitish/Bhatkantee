@@ -28,6 +28,7 @@ import { HeaderComponent } from '../components/header/header';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthProvider } from '../providers/auth/auth';
+import { CommonServicesProvider } from '../providers/common-services/common-services';
 
 //import { AngularFirestoreModule } from 'angularfire2/firestore';
 
@@ -97,7 +98,8 @@ const firebaseConfig = {
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthProvider
+    AuthProvider,
+    CommonServicesProvider
   ]
 })
 export class AppModule {}

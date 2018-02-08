@@ -24,15 +24,13 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,  afAuth: AngularFireAuth) {
-    const authObserver = afAuth.authState.subscribe( user => {
+    afAuth.authState.subscribe( user => {
       if(user){
         this.rootPage = TabsPage;
-        authObserver.unsubscribe();
       } else {
         this.rootPage = LoginPage;
-        authObserver.unsubscribe();
       }
-    });
+    }); 
 
     this.initializeApp();
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { HeaderComponent } from '../../components/header/header'
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -10,11 +11,14 @@ import { HeaderComponent } from '../../components/header/header'
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private authService: AuthProvider) {
+  }
+
+  ionViewCanEnter(){
+    return this.authService.authenticated();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
-
 }

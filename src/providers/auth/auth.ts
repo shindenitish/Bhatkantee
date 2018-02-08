@@ -4,8 +4,7 @@ import firebase from 'firebase/app';
 
 @Injectable()
 export class AuthProvider {
-
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth) {
   }
 
   loginUser(email: string, password: string): Promise<any> {
@@ -22,6 +21,15 @@ export class AuthProvider {
 
   registerUser(email: string, password: string): Promise<any> {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  authenticated() : boolean {
+    if (firebase.auth().currentUser == null){
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
 }

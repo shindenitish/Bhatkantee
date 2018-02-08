@@ -1,15 +1,14 @@
 page-login{
     form {
-        margin-bottom: 32px;
-        
+        margin-bottom: 32px;        
         button {
             margin-top: 20px;
         }
     }
   
     p {
-        font-size: 0.8em;
-        color: #d2d2d2;
+        font-size: 1em;
+        color: #FF6153;
     }
   
     ion-label {
@@ -26,6 +25,17 @@ page-login{
   
     .error-message .item-inner {
         border-bottom: 0 !important;
+    }  
+
+    ion-card img {
+        width: auto;
+        height: 110px;
+        display: block;
+        margin: 20px auto;
     }
-  
-  }
+
+    ion-card {
+        border: rgb(194, 212, 25)
+    }
+
+}
