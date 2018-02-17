@@ -4,7 +4,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HeaderComponent } from '../../components/header/header'
 import { AuthProvider } from '../../providers/auth/auth';
 
-@IonicPage()
 @Component({
   selector: 'page-settings',
   templateUrl: 'settings.html',

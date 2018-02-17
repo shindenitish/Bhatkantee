@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { HeaderComponent } from '../../components/header/header'
 
-@IonicPage()
 @Component({
   selector: 'page-notifications',
   templateUrl: 'notifications.html',

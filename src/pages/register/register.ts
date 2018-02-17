@@ -9,9 +9,6 @@ import { EmailValidator } from '../../validators/email';
 
 import { LoginPage } from '../login/login';
 
-
-
-@IonicPage()
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',

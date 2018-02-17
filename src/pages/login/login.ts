@@ -10,8 +10,6 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { CommonServicesProvider } from '../../providers/common-services/common-services';
 import { EmailValidator } from '../../validators/email';
 
-
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',

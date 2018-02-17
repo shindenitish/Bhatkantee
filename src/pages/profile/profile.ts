@@ -9,8 +9,6 @@ import { LoginPage } from '../login/login';
 import { AuthProvider } from '../../providers/auth/auth';
 import { CommonServicesProvider } from '../../providers/common-services/common-services';
 
-
-@IonicPage()
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
