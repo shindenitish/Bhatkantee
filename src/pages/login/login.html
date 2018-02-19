@@ -1,40 +1,60 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <ion-title>
+  <ion-navbar>
+    <ion-title >
       Bhatkantee
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <!--<ion-card>
-        <img src="{{appLogo}}"/>  
-    </ion-card>-->
+  <ion-list inset>
     <div>
-      <img src="assets/imgs/appLogo.png" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+      <img src="assets/imgs/appLogo.png">
     </div>
-  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input #email formControlName="email" type="email" [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.dirty"></ion-input>
-    </ion-item>
-    <ion-item no-lines class="error-message" *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
-      <p>Enter a valid email</p>
-    </ion-item>
+    <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+      <div>
+        <ion-label stacked>Email or Mobile Number</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+        <p *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+          Enter a valid email or mobile number
+        </p>
+      </div>                  
+      <div>
+        <ion-label Stacked>Password</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+        <p *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
+          Weak password (min. 6 characters)
+        </p>
+      </div>            
+      <button margin-top ion-button block type="submit" [disabled]="!loginForm.valid">Login</button>      
+    </form>
+  
+    <div padding-top style="text-align:center">
+      <a style="color:rgb(245, 165, 140);" (click)="goToResetPassword()">
+        Forgot password?
+      </a>
+    </div>
 
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input #password formControlName="password" type="password" [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
-    </ion-item>
-    <ion-item no-lines class="error-message" *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
-      <p>Weak password (min. 6 characters)</p>
-    </ion-item>
-
-    <button ion-button block type="submit" [disabled]="!loginForm.valid">Login</button>
-  </form>
-  <div padding style="text-align:center"><a (click)="goToResetPassword()">Forgot your password?</a></div>
-  <div padding style="text-align:center"><a (click)="createAccount()">Don't have an account yet? Register here!</a></div>
-
+    <div margin-top>
+      <ion-row>
+        <ion-col col-5><hr></ion-col>
+        <ion-col col-2 style="text-align:center;">OR</ion-col>
+        <ion-col col-5><hr></ion-col>
+      </ion-row>
+    </div>
+    
+    <div>
+        <button ion-button icon-left block>
+            <ion-icon name="logo-google"></ion-icon>
+            &nbsp; Log in with Google
+          </button>      
+    </div>
+    <div padding-top style="text-align:center;">
+      <a style="color:rgb(245, 165, 140);" (click)="createAccount()">
+        Don't have an account yet? Register here!
+      </a>
+    </div>
+  </ion-list>
   <!--<button ion-button block clear (click)="goToResetPassword()">Forgot Password</button>
   <button ion-button block clear (click)="createAccount()">Create Account</button>-->
 </ion-content>
