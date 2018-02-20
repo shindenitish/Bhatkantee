@@ -18,6 +18,10 @@ page-login{
         text-transform: none;
     }
 
+    ion-input{
+        background: rgb(241, 237, 237) !important;
+    }
+
     form{  
         
         margin-top: 20px;
@@ -26,11 +30,6 @@ page-login{
             font-size: smaller;
             color: #e13838 !important;
             padding-left: 5px;
-        }
-
-        ion-input{                
-            background: rgb(241, 237, 237) !important;
-            padding-left: 5px;   
         }
         
         div{
@@ -41,11 +40,14 @@ page-login{
                 padding-left: 2px;
                 color: rgb(163, 24, 24);
             }
-    
-            ion-input{
-
-                background: rgb(241, 237, 237) !important;
-                padding-left: 5px;   
+            
+            input{
+                background: rgb(241, 237, 237) !important;  
+                width: 100%;
+                border:none;
+                height: 35px;
+                padding-left: 5px;
+                font-size: medium;
             }
 
             .ng-invalid.ng-dirty {

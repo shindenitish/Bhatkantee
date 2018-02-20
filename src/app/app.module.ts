@@ -20,7 +20,10 @@ import { RegisterPage } from '../pages/register/register';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 
 import { StatusBar } from '@ionic-native/status-bar';
+import { DatePicker } from '@ionic-native/date-picker';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { DatePipe } from '@angular/common'
+
 
 import { HeaderComponent } from '../components/header/header';
 
@@ -96,7 +99,10 @@ const firebaseConfig = {
   ],
   providers: [
     StatusBar,
+    DatePicker,
     SplashScreen,
+    DatePipe,
+    
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     CommonServicesProvider

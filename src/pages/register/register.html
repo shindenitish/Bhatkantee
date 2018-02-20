@@ -1,30 +1,56 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <ion-title>
-      Bhatkantee
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+      <ion-title >
+        Bhatkantee
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-list inset>
+      <div>
+        <img src="assets/imgs/appLogo.png">
+      </div>
+      <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
+        <div>
+          <ion-label stacked>Full Name</ion-label>
+          <input formControlName="fullName" type="text">
+          <p *ngIf="!signupForm.controls.fullName.valid  && signupForm.controls.fullName.dirty">
+            Enter a valid name (min. 5 characters)
+          </p>
+        </div>
+        <div>
+          <ion-label stacked>Email or Mobile Number</ion-label>
+          <input formControlName="email" type="email">
+          <p *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
+            Enter a valid email or mobile number
+          </p>
+        </div>                  
+        <div>
+          <ion-label Stacked>Password</ion-label>
+          <input formControlName="password" type="password">
+          <p *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
+            Weak password (min. 6 characters)
+          </p>
+        </div>
+        <div>
+          <ion-label stacked>Birth Date</ion-label>
+          <input formControlName="birthDate" type="text" disabled (click)="chooseDate()">
+          <p *ngIf="dob">
+              Birth date is required
+          </p>
+        </div>
+        <div>          
+          <ion-list radio-group margin-top>            
+            <ion-row class="gender" align-items-start>
+              <ion-col align-self-start><div>Gender</div></ion-col>
+              <ion-col><ion-radio float-left value="male"></ion-radio>&nbsp;Male</ion-col>              
+              <ion-col><ion-radio float-left value="female"></ion-radio>&nbsp;Female</ion-col>              
+            </ion-row>            
+          </ion-list>
+        </div>      
 
-<ion-content padding>
-    <ion-card>
-        <img src="assets/imgs/appLogo.png"/>  
-    </ion-card>
-  <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input formControlName="email" type="email" [class.invalid]="!signupForm.controls.email.valid && signupForm.controls.email.dirty"></ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
-      <p>Enter a valid email</p>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input formControlName="password" type="password" [class.invalid]="!signupForm.controls.password.valid && signupForm.controls.password.dirty"></ion-input>
-    </ion-item>
-    <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
-      <p>Weak Password (min. 6 characters)</p>
-    </ion-item>
-    <button ion-button block type="submit"[disabled]="!signupForm.valid" >Create an Account</button>
-  </form>
-</ion-content>
+        <button margin-top ion-button block type="submit" [disabled]="!signupForm.valid">Create Account</button>      
+      </form>
+    </ion-list>
+  </ion-content>
