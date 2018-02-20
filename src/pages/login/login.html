@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title >
-      Login Page
+      Bhatkantee
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -11,19 +11,18 @@
     <div>
       <img src="assets/imgs/appLogo.png">
     </div>
-    <ion-input type="email"></ion-input>
-
+    
     <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
       <div>
         <ion-label stacked>Email or Mobile Number</ion-label>        
-        <input formControlName="email" type="email">
+        <ion-input formControlName="email" type="email"></ion-input>
         <p *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
           Enter a valid email or mobile number
         </p>
       </div>                  
       <div>
         <ion-label Stacked>Password</ion-label>
-        <input formControlName="password" type="password">
+        <ion-input formControlName="password" type="password"></ion-input>
         <p *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
           Weak password (min. 6 characters)
         </p>

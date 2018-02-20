@@ -1,9 +1,5 @@
 page-login{
-
-    ion-title{
-        text-align: center;
-    }
-
+    
     img {
         width: auto;
         height: 90px;
@@ -12,19 +8,11 @@ page-login{
     }
 
     .button {
-        //margin-top: 20px;
         background-color: #ec6a5b;
-        //margin-bottom: 18px;
         text-transform: none;
-    }
-
-    ion-input{
-        background: rgb(241, 237, 237) !important;
-    }
+    }    
 
     form{  
-        
-        margin-top: 20px;
             
         p{
             font-size: smaller;
@@ -33,21 +21,15 @@ page-login{
         }
         
         div{
-            //margin-bottom: 2px!important;
             //background: rgb(201, 197, 197) !important;
 
             ion-label{
                 padding-left: 2px;
                 color: rgb(163, 24, 24);
             }
-            
-            input{
-                background: rgb(241, 237, 237) !important;  
-                width: 100%;
-                border:none;
-                height: 35px;
-                padding-left: 5px;
-                font-size: medium;
+
+            ion-input{
+                background: rgb(241, 237, 237) !important;
             }
 
             .ng-invalid.ng-dirty {

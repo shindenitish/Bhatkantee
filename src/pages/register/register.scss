@@ -1,7 +1,4 @@
 page-register {
-  ion-title{
-    text-align: center;
-  }
 
   img {
     width: auto;
@@ -11,32 +8,12 @@ page-register {
   }
 
   .button {
-    //margin-top: 20px;
     background-color: #ec6a5b;
-    //margin-bottom: 18px;
     text-transform: none;
   }
 
-  ion-datetime {
-    background: rgb(241, 237, 237) !important;
-    padding-left: 5px !important;
-
-    button {
-      position: relative !important;
-    } 
-     
-
-    .datetime-text {
-      
-      overflow: visible;
-    }
-  
-    flex: 1;
-  }
-
   form{  
-    margin-top: 20px;
-          
+              
     p{
       font-size: smaller;
       color: #e13838 !important;
@@ -63,15 +40,10 @@ page-register {
         color: rgb(163, 24, 24);
       }
 
-      input{
-        background: rgb(241, 237, 237) !important;  
-        width: 100%;
-        border:none;
-        height: 35px;
-        padding-left: 5px;
-        font-size: medium;
-      }
-
+      ion-input{
+        background: rgb(241, 237, 237) !important;
+    }
+     
       .ng-invalid.ng-dirty {
         border: 1px solid #ea6153;
       }
