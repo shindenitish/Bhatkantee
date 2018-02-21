@@ -12,34 +12,40 @@
         <img src="assets/imgs/appLogo.png">
       </div>
       <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
-        <div>
-          <ion-label stacked>Full Name</ion-label>
+        
+        <ion-label stacked>Full Name</ion-label>
+        <ion-item>
           <ion-input formControlName="fullName" type="text"></ion-input>
-          <p *ngIf="!signupForm.controls.fullName.valid  && signupForm.controls.fullName.dirty">
-            Enter a valid name (min. 5 characters)
-          </p>
-        </div>
-        <div>
-          <ion-label stacked>Email or Mobile Number</ion-label>
+        </ion-item>
+        <p *ngIf="!signupForm.controls.fullName.valid  && signupForm.controls.fullName.dirty">
+          Enter a valid name (min. 5 characters)
+        </p>
+        
+        
+        <ion-label stacked>Email or Mobile Number</ion-label>
+        <ion-item>
           <ion-input formControlName="email" type="email"></ion-input>
-          <p *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
-            Enter a valid email or mobile number
-          </p>
-        </div>                  
-        <div>
-          <ion-label Stacked>Password</ion-label>
+        </ion-item>
+        <p *ngIf="!signupForm.controls.email.valid  && signupForm.controls.email.dirty">
+          Enter a valid email or mobile number
+        </p>
+               
+        <ion-label Stacked>Password</ion-label>
+        <ion-item>
           <ion-input formControlName="password" type="password"></ion-input>
-          <p *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
-            Weak password (min. 6 characters)
-          </p>
-        </div>
-        <div>
-          <ion-label stacked>Birth Date</ion-label>
+        </ion-item>
+        <p *ngIf="!signupForm.controls.password.valid  && signupForm.controls.password.dirty">
+          Weak password (min. 6 characters)
+        </p>
+                
+        <ion-label stacked>Birth Date</ion-label>
+        <ion-item>
           <ion-input formControlName="birthDate" type="text" disabled (click)="chooseDate()"></ion-input>
-          <p *ngIf="dob">
-              Birth date is required
-          </p>
-        </div>
+        </ion-item>
+        <p *ngIf="!signupForm.controls.birthDate.valid  && signupForm.controls.birthDate.dirty">
+          Birth date is required
+        </p>
+        
         <div>          
           <ion-list radio-group margin-top>            
             <ion-row class="gender" align-items-start>

@@ -13,25 +13,29 @@
     </div>
     
     <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
-      <div>
-        <ion-label stacked>Email or Mobile Number</ion-label>        
-        <ion-input formControlName="email" type="email"></ion-input>
-        <p *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
-          Enter a valid email or mobile number
-        </p>
-      </div>                  
-      <div>
-        <ion-label Stacked>Password</ion-label>
+      
+      <ion-label stacked>Email or Mobile Number</ion-label>          
+      <ion-item>
+          <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>        
+      <p *ngIf="!loginForm.controls.email.valid  && loginForm.controls.email.dirty">
+        Enter a valid email or mobile number
+      </p>
+      
+      <ion-label Stacked>Password</ion-label>
+      <ion-item>
         <ion-input formControlName="password" type="password"></ion-input>
-        <p *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
-          Weak password (min. 6 characters)
-        </p>
-      </div>            
+      </ion-item>
+      <p *ngIf="!loginForm.controls.password.valid  && loginForm.controls.password.dirty">
+        Weak password (min. 6 characters)
+      </p>
+      
       <button margin-top ion-button block type="submit" [disabled]="!loginForm.valid">Login</button>      
     </form>
   
     <div padding-top style="text-align:center">
-      <a style="color:rgb(245, 165, 140);" (click)="goToResetPassword()">
+      <!--<a style="color:rgb(245, 165, 140);" (click)="goToResetPassword()">-->
+      <a (click)="goToResetPassword()">
         Forgot password?
       </a>
     </div>
@@ -51,11 +55,9 @@
           </button>      
     </div>
     <div padding-top style="text-align:center;">
-      <a style="color:rgb(245, 165, 140);" (click)="createAccount()">
+      <a (click)="createAccount()">
         Don't have an account yet? Register here!
       </a>
     </div>
   </ion-list>
-  <!--<button ion-button block clear (click)="goToResetPassword()">Forgot Password</button>
-  <button ion-button block clear (click)="createAccount()">Create Account</button>-->
 </ion-content>

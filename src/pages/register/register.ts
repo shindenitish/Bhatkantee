@@ -21,7 +21,6 @@ export class RegisterPage {
 
   public signupForm: FormGroup;
   public loading: Loading;
-  private dob: boolean=false;
 
   appLogo: string="../../assets/imgs/appLogo.png";
 
@@ -69,13 +68,10 @@ export class RegisterPage {
     }
     this.datePicker.show(options)
       .then((date: Date) => {
-        this.dob=false;
         this.signupForm.controls.birthDate.setValue(this.datepipe.transform(date, 'dd-MMM-yyyy'));  
       }
     ).catch((e) => {
-      if(this.signupForm.controls.birthDate.value==''){
-        this.dob=true;
-      }
+      this.signupForm.controls.birthDate.markAsDirty();
     });
   }
 }

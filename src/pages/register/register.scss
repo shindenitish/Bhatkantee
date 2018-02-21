@@ -16,7 +16,6 @@ page-register {
               
     p{
       font-size: smaller;
-      color: #e13838 !important;
       padding-left: 5px;
     }
 
@@ -31,28 +30,32 @@ page-register {
       }
     }
       
-    div{
-      //margin-bottom: 2px!important;
-      //background: rgb(201, 197, 197) !important;
-
-      ion-label{
-        padding-left: 2px;
-        color: rgb(163, 24, 24);
-      }
-
-      ion-input{
-        background: rgb(241, 237, 237) !important;
+    p{
+      font-size: smaller;
+      color: #e13838 !important;
+      padding-left: 5px;
     }
-     
-      .ng-invalid.ng-dirty {
-        border: 1px solid #ea6153;
+
+    ion-label{
+        padding-left: 2px;
+        //color: rgb(163, 24, 24);
+    }
+
+    ion-item{            
+      background: rgb(241, 237, 237) !important;  
+
+      .item-inner{                
+        border-bottom-color: transparent !important; 
+        box-shadow:none!important;                      
       }
 
-      /*.item-inner{
-        margin-left: 5px;
-        border-bottom-color: transparent !important;
-        box-shadow:none!important;
-      }*/
+      .input.ng-dirty.ng-valid {
+        border-left: #5bec7f solid 2px;
+      }
+
+      .input.ng-dirty.ng-invalid {
+        border-left: #ec6a5b solid 2px;
+      }
     }
   }
 }
