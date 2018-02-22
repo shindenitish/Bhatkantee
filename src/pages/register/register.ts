@@ -24,17 +24,27 @@ export class RegisterPage {
 
   appLogo: string="../../assets/imgs/appLogo.png";
 
-  constructor(public nav: NavController, public authData: AuthProvider, private common: CommonServicesProvider, public formBuilder: FormBuilder, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public menu: MenuController, private datePicker: DatePicker, private datepipe: DatePipe) {
-    this.menu = menu;
-    this.menu.enable(false, 'myMenu')
+  constructor(public nav: NavController,
+    public authData: AuthProvider, 
+    private common: CommonServicesProvider, 
+    public formBuilder: FormBuilder, 
+    public loadingCtrl: LoadingController, 
+    public alertCtrl: AlertController, 
+    public menu: MenuController, 
+    private datePicker: DatePicker, 
+    private datepipe: DatePipe) {   
     
-    this.signupForm = formBuilder.group({
-      fullName: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.pattern('^[a-zA-Z\\s]*$')])],
-      email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-      password: ['', Validators.compose([Validators.minLength(6), Validators.required])],      
-      birthDate: ['', Validators.compose([Validators.required])]
-    });
-  }
+      this.menu = menu;
+      this.menu.enable(false, 'myMenu')
+    
+      this.signupForm = formBuilder.group({
+        fullName: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.pattern('^[a-zA-Z\\s]*$')])],
+        email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
+        password: ['', Validators.compose([Validators.minLength(6), Validators.required])],      
+        birthDate: ['', Validators.compose([Validators.required])],
+        gender: ['', Validators.compose([Validators.required])]
+      });
+    }
 
   signupUser(){
     if (!this.signupForm.valid){

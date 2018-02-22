@@ -1,14 +1,14 @@
 page-register {
 
-  img {
+  /*img {
     width: auto;
     height: 90px;
     display: block;
     margin: 0px auto;
-  }
+  }*/
 
   .button {
-    background-color: #ec6a5b;
+    //background-color: #ec6a5b;
     text-transform: none;
   }
 
@@ -22,7 +22,7 @@ page-register {
     .gender {
       :first-child{        
         padding-left: 1px; 
-        color: rgb(163, 24, 24);
+        //color: rgb(163, 24, 24);
       }
       
       :not(:first-child){

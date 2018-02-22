@@ -1,16 +1,13 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title >
-        Bhatkantee
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title >
+      Bhatkantee
+    </ion-title>
+  </ion-navbar>
+</ion-header>
   
   <ion-content padding>
     <ion-list inset>
-      <div>
-        <img src="assets/imgs/appLogo.png">
-      </div>
       <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
         
         <ion-label stacked>Full Name</ion-label>
@@ -46,17 +43,15 @@
           Birth date is required
         </p>
         
-        <div>          
-          <ion-list radio-group margin-top>            
-            <ion-row class="gender" align-items-start>
-              <ion-col align-self-start><div>Gender</div></ion-col>
-              <ion-col><ion-radio float-left value="male"></ion-radio>&nbsp;Male</ion-col>              
-              <ion-col><ion-radio float-left value="female"></ion-radio>&nbsp;Female</ion-col>              
-            </ion-row>            
-          </ion-list>
-        </div>      
-
-        <button margin-top ion-button block type="submit" [disabled]="!signupForm.valid">Create Account</button>      
+        <ion-list radio-group formControlName="gender" margin-top>            
+          <ion-row class="gender" align-items-start>
+            <ion-col align-self-start><div>Gender</div></ion-col>
+            <ion-col><ion-radio float-left value="m"></ion-radio>&nbsp;Male</ion-col>              
+            <ion-col><ion-radio float-left  value="f"></ion-radio>&nbsp;Female</ion-col>              
+          </ion-row>            
+        </ion-list>
+          
+        <button ion-button margin-top block type="submit" [disabled]="!signupForm.valid">Create Account</button>      
       </form>
     </ion-list>
   </ion-content>

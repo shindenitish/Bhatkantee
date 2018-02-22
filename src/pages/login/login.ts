@@ -7,8 +7,8 @@ import { RegisterPage } from '../register/register';
 import { ResetPasswordPage } from '../reset-password/reset-password';
 
 import { AuthProvider } from '../../providers/auth/auth';
-import { CommonServicesProvider } from '../../providers/common-services/common-services';
 import { EmailValidator } from '../../validators/email';
+import { CommonServicesProvider } from '../../providers/common-services/common-services';
 
 @Component({
   selector: 'page-login',
@@ -20,7 +20,13 @@ export class LoginPage {
   loading: Loading;
   appLogo: string="../../assets/imgs/appLogo.png";
 
-  constructor(public navCtrl: NavController, public authData: AuthProvider, public formBuilder: FormBuilder, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public menu:MenuController, private common: CommonServicesProvider) {
+  constructor(private navCtrl: NavController,  
+  private alertCtrl: AlertController, 
+  private loadingCtrl: LoadingController, 
+  private menu:MenuController, 
+  private formBuilder: FormBuilder,
+  private authData: AuthProvider,
+  private common: CommonServicesProvider) {
     this.menu = menu;
     this.menu.enable(false, 'myMenu')
 

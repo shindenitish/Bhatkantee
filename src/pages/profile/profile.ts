@@ -16,7 +16,10 @@ import { CommonServicesProvider } from '../../providers/common-services/common-s
 export class ProfilePage {
   private email;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  private authService: AuthProvider, private common: CommonServicesProvider) {
+  constructor(public navCtrl: NavController, 
+  public navParams: NavParams,
+  private authService: AuthProvider,
+  private common: CommonServicesProvider) {
     this.getUserInfo();
   }
 
@@ -38,9 +41,7 @@ export class ProfilePage {
     }
   }
 
-  signOut(){
-    var user = firebase.auth().currentUser;
-    
+  signOut(){       
     this.authService.logoutUser().then( authData => {
       this.navCtrl.setRoot(LoginPage);
     }, error => {
