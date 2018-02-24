@@ -5,6 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: 'header.html'
 })
 export class HeaderComponent {
+  flag=false;
 
   constructor() {}
+
+  searchBar(){
+    this.flag=true;
+  }
 }

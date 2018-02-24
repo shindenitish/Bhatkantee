@@ -1,11 +1,32 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
 
 import firebase from 'firebase/app';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+import { User } from '../../models/model';
 
 @Injectable()
 export class AuthProvider {
+  
+  private authState: Observable<firebase.User>
+  private currentUser: firebase.User = null;
+
   constructor(private afAuth: AngularFireAuth) {
+    
+    this.authState = this.afAuth.authState;
+    
+    this.authState.subscribe(user => {
+      if(user) {
+        this.currentUser = user;
+      } else {
+        this.currentUser = null;
+      }
+    });
+  }
+
+  getAuthState() {
+    return this.authState;
   }
 
   loginUser(email: string, password: string): Promise<any> {
@@ -24,13 +45,12 @@ export class AuthProvider {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
-  authenticated() : boolean {
-    if (firebase.auth().currentUser == null){
-      return false;
-    }
-    else{
-      return true;
-    }
+  userState(){
+    return this.currentUser;
+  }
+
+  sendVerfication(){
+    return this.currentUser.sendEmailVerification();
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { LoginPage } from '../login/login';
@@ -24,11 +23,16 @@ export class ProfilePage {
   }
 
   ionViewCanEnter(){
-    return this.authService.authenticated();
+    if(this.authService.userState() == null){
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
   getUserInfo(){
-    var user = firebase.auth().currentUser;
+    var user = this.authService.userState();
 
     if (user != null) {
       var name= user.displayName;

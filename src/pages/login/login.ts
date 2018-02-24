@@ -46,12 +46,17 @@ export class LoginPage {
 
   loginUser(){
     if(!this.loginForm.valid){
-
       console.log(this.loginForm.value);
     } else {
       this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password)
       .then( authData => {
+        if(authData.emailVerified){
         this.navCtrl.setRoot(TabsPage);
+        }
+        else{
+          this.common.showBasicAlert('Alert', "Please verify your email");     
+          this.loading.dismiss();   
+        }
       }, error => {
         this.loading.dismiss().then(() => {
           this.common.showBasicAlert('Error', error.message);        

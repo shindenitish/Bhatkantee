@@ -14,7 +14,12 @@ export class SettingsPage {
   }
 
   ionViewCanEnter(){
-    return this.authService.authenticated();
+    if(this.authService.userState() == null){
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
   ionViewDidLoad() {

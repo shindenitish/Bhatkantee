@@ -30,10 +30,11 @@ import { HeaderComponent } from '../components/header/header';
 //Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 import { AuthProvider } from '../providers/auth/auth';
 import { CommonServicesProvider } from '../providers/common-services/common-services';
 
-//import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDp5nn2AHsJyHY_0vbm0WPYlf8C9T5ocBM",
@@ -72,9 +73,10 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    //AngularFirestoreModule.enablePersistence()
+    AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
