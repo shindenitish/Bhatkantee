@@ -1,24 +1,35 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { AngularFireAuth } from 'angularfire2/auth';
+//  import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 import { LoginPage } from '../login/login';
 
 import { AuthProvider } from '../../providers/auth/auth';
 import { CommonServicesProvider } from '../../providers/common-services/common-services';
 
+import { User } from '../../models/model';
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-  private email;
+
+  private user: User={
+    userId:'',
+    fullName:'Loading..',
+    email:'Loading..',
+    birthDate: null,
+    gender: ''
+  };
 
   constructor(public navCtrl: NavController, 
   public navParams: NavParams,
   private authService: AuthProvider,
-  private common: CommonServicesProvider) {
+  private common: CommonServicesProvider,
+  private afs:AngularFirestore) {
     this.getUserInfo();
   }
 
@@ -32,17 +43,24 @@ export class ProfilePage {
   }
 
   getUserInfo(){
-    var user = this.authService.userState();
 
-    if (user != null) {
-      var name= user.displayName;
-      var email = user.email;
-      var photoUrl = user.photoURL;
-      var emailVerified = user.emailVerified;
-      var uid = user.uid;
 
-      this.email=email;
-    }
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.authService.userState().uid}`);
+
+    userRef.ref.onSnapshot(doc => {
+        if(doc.exists) {
+          //console.log("Document data:", doc.data());
+          this.user.fullName= doc.data().fullName;
+          this.user.email = doc.data().email;
+          this.user.gender = doc.data().gender;
+          this.user.birthDate= doc.data().birthDate;
+          this.user.userId = doc.data().userId;
+        } else {
+          console.log("No such document!");
+        }
+    },error => {
+        console.log("Error getting document:", error);
+    });
   }
 
   signOut(){       
