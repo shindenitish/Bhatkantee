@@ -16,5 +16,4 @@ export class CommonServicesProvider {
     });
     alert.present();
   }
-
 }

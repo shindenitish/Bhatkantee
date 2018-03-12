@@ -67,7 +67,7 @@ export class RegisterPage {
         this.addUser(user);
       }, (error) => {
         this.loading.dismiss().then( () => {
-          this.common.showBasicAlert('Error', error.message);        
+          this.common.showBasicAlert('Registration failed!', error.message);        
         });
       });
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-//  import { AngularFireAuth } from 'angularfire2/auth';
+//import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 import { LoginPage } from '../login/login';
@@ -44,20 +44,19 @@ export class ProfilePage {
 
   getUserInfo(){
 
-
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.authService.userState().uid}`);
 
     userRef.ref.onSnapshot(doc => {
-        if(doc.exists) {
-          //console.log("Document data:", doc.data());
-          this.user.fullName= doc.data().fullName;
-          this.user.email = doc.data().email;
-          this.user.gender = doc.data().gender;
-          this.user.birthDate= doc.data().birthDate;
-          this.user.userId = doc.data().userId;
-        } else {
-          console.log("No such document!");
-        }
+      if(doc.exists) {
+        //console.log("Document data:", doc.data());
+        this.user.fullName= doc.data().fullName;
+        this.user.email = doc.data().email;
+        this.user.gender = doc.data().gender;
+        this.user.birthDate= doc.data().birthDate.toString('dd-MMM-yyyy');
+        this.user.userId = doc.data().userId;
+      } else {
+        console.log("No such document!");
+      }
     },error => {
         console.log("Error getting document:", error);
     });

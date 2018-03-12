@@ -2,25 +2,30 @@
   <header></header>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-item no-lines>
     <ion-avatar >
       <img src="assets/imgs/profile.jpg">
     </ion-avatar>
   </ion-item>
-  <div padding style="text-align:center"><a (click)="signOut()">{{user.fullName}}</a></div>
+  <!-- <div padding-top style="text-align:center"><a (click)="signOut()">Edit Profile</a></div> -->
   <ion-list inset>    
-    <ion-item>
+    <ion-item no-lines>
       <ion-label stacked>Name</ion-label>
-      <ion-input type="text" value="{{user.fullName}}"></ion-input>
+      <ion-input disabled type="text" value="{{user.fullName}}"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item no-lines>
       <ion-label stacked>Email</ion-label>
-      <ion-input type="text" value="{{user.email}}"></ion-input>
+      <ion-input disabled type="text" value="{{user.email}}"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item no-lines>
       <ion-label stacked>Birth Date</ion-label>
-      <ion-input type="text" value="{{user.birthDate}}"></ion-input>
-    </ion-item>
+      <ion-input disabled type="text" value="{{user.birthDate | date: 'dd-MMM-yyyy'}}"></ion-input>
+    </ion-item>    
   </ion-list>
+  <ion-row padding>
+    <ion-col> 
+      <button ion-button block (click)="signOut()">Logout</button>
+    </ion-col>  
+  </ion-row>
 </ion-content>
